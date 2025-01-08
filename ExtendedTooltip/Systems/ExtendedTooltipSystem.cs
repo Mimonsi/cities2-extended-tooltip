@@ -249,10 +249,25 @@ namespace ExtendedTooltip.Systems
 			}
 
 			// PARKING FACILITY TOOLTIP
-			if (Mod.Settings.ShowParkingFacility && EntityManager.HasComponent<Game.Buildings.ParkingFacility>(selectedEntity))
+			if (Mod.Settings.ShowParkingFacility)
 			{
-				m_ParkingFacilityTooltipBuilder.Build(selectedEntity, m_PrimaryETGroup);
-				return; // don't have any other info. No need to check for other components
+				if (EntityManager.HasComponent<Game.Buildings.ParkingFacility>(selectedEntity))
+				{
+					m_ParkingFacilityTooltipBuilder.Build(selectedEntity, m_PrimaryETGroup);
+					return; // don't have any other info. No need to check for other components
+				}
+				else
+				{
+					try
+					{
+						m_ParkingFacilityTooltipBuilder.Build(selectedEntity, m_PrimaryETGroup);
+						return;
+					}
+					catch (Exception)
+					{
+
+					}
+				}
 			}
 
 			// PUBLIC TRANSPORTATION TOOLTIP

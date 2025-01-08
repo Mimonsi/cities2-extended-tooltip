@@ -39,11 +39,11 @@ Thanks to TDW for their efforts to migrate this mod and apply various improvemen
 	<Screenshot Value="Properties/Screenshot_08.png" />
 	<Tag Value="Code Mod" />
 	<ForumLink Value="https://forum.paradoxplaza.com/forum/threads/extendedtooltip.1657861/" />
-	<ModVersion Value="1.5.0" />
+	<ModVersion Value="1.6.0" />
 	<GameVersion Value="1.2.*" />
 	<ChangeLog>
-- Compatibility for Patch 1.2.0f1
+- Add Parking Capacity display for buildings with integrated parking
 	</ChangeLog>
 	<ExternalLink Type="discord" Url="https://discord.com/invite/HTav7ARPs2" />
-	<ExternalLink Type="github" Url="https://github.com/kosch104/cities2-extended-tooltip" />
+	<ExternalLink Type="github" Url="https://github.com/Mimonsi/cities2-extended-tooltip" />
 </Publish>

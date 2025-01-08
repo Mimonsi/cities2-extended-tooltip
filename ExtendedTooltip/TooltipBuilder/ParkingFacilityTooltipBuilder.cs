@@ -26,7 +26,7 @@ namespace ExtendedTooltip.TooltipBuilder
 		{
 			var model = Mod.Settings;
 
-			if (model.ShowParkingFees == false && model.ShowParkingCapacity == false)
+			if (!model.ShowParkingFees && !model.ShowParkingCapacity)
 			{
 				return;
 			}
@@ -52,7 +52,7 @@ namespace ExtendedTooltip.TooltipBuilder
 			}
 
 			// Only if activated
-			if (model.ShowParkingFees == true)
+			if (model.ShowParkingFees && parkingFee > 0)
 			{
 				if (laneCount != 0)
 				{
@@ -68,7 +68,7 @@ namespace ExtendedTooltip.TooltipBuilder
 			}
 
 			// Only if activated
-			if (model.ShowParkingCapacity == true)
+			if (model.ShowParkingCapacity && parkingCapacity > 0)
 			{
 				if (parkingCapacity < 0)
 				{

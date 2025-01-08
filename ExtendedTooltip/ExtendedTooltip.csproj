@@ -5,8 +5,8 @@
 		<TargetFramework>net472</TargetFramework>
 		<Configurations>Debug;Release</Configurations>
 		<Version>1.1.0</Version>
-		<FileVersion>1.5.0</FileVersion>
-		<AssemblyVersion>1.5.0</AssemblyVersion>
+		<FileVersion>1.6.0</FileVersion>
+		<AssemblyVersion>1.6.0</AssemblyVersion>
 		<Copyright>@2024 MIT license</Copyright>
 		<Product>Extended Tooltip</Product>
 	</PropertyGroup>

@@ -129,6 +129,22 @@ namespace ExtendedTooltip.TooltipBuilder
 				};
 				tooltipGroup.children.Add(educationTooltip);
 			}
+
+			// Shift
+			if (model.ShowCitizenShift)
+			{
+				if (m_EntityManager.TryGetComponent(entity, out Worker worker))
+				{
+					string shiftLocalization = m_CustomTranslationSystem.GetLocalGameTranslation($"extendedtooltip.workshift[{worker.m_Shift}]", "Unknown");
+					StringTooltip shiftTooltip = new()
+					{
+						icon = "Media/Game/Icons/Workers.svg",
+						value = $"{m_CustomTranslationSystem.GetLocalGameTranslation($"SelectedInfoPanel.CITIZEN_SHIFT", "Shift")}: {shiftLocalization}",
+						color = TooltipColor.Info,
+					};
+					(model.UseExtendedLayout ? secondaryTooltipGroup : tooltipGroup).children.Add(shiftTooltip);
+				}
+			}
 		}
 	}
 }

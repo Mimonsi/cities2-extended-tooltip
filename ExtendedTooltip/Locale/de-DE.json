@@ -23,6 +23,9 @@
   "extendedtooltip.zone_info[Row]": "Reihe",
   "extendedtooltip.zone_info[Mixed]": "Gemischt",
   "extendedtooltip.zone_info[LowRent]": "Geringe Miete",
+  "extendedtooltip.workshift[Day]": "Tagschicht",
+  "extendedtooltip.workshift[Evening]": "Spätschicht",
+  "extendedtooltip.workshift[Night]": "Nachtschicht",
   "extendedtooltip.setting.enableMod": "Mod aktivieren",
   "extendedtooltip.setting.enableMod.description": "Aktiviere/Deaktiviert die Mod im Spiel.",
   "Options.OPTION[ExtendedTooltip.ExtendedTooltip.Mod.ModSettings.DisplayMode]": "Anzeigemodus",
@@ -71,6 +74,7 @@
   "Options.OPTION_DESCRIPTION[ExtendedTooltip.ExtendedTooltip.Mod.ModSettings.ShowLandValue]": "Zeigt den Grundstückswert des Gebäudes an.",
   "Options.OPTION_DESCRIPTION[ExtendedTooltip.ExtendedTooltip.Mod.ModSettings.ShowCitizen]": "Vewalte die Tooltips die angezeigt werden während du einen Bürger auswählst.",
   "Options.OPTION_DESCRIPTION[ExtendedTooltip.ExtendedTooltip.Mod.ModSettings.ShowCitizenState]": "Zeigt den aktuellen Status des Bürgers.",
+  "Options.OPTION_DESCRIPTION[ExtendedTooltip.ExtendedTooltip.Mod.ModSettings.ShowCitizenShift]": "Zeigt die aktuelle Schicht, in der der Bürger angestellt ist.",
   "Options.OPTION_DESCRIPTION[ExtendedTooltip.ExtendedTooltip.Mod.ModSettings.ShowCitizenHappiness]": "Zeigt an, wie glücklich der ausgewählte Bürger derzeit ist.",
   "Options.OPTION_DESCRIPTION[ExtendedTooltip.ExtendedTooltip.Mod.ModSettings.ShowCitizenEducation]": "Zeigt das Bildungsniveau des ausgewählten Bürgers.",
   "Options.OPTION_DESCRIPTION[ExtendedTooltip.ExtendedTooltip.Mod.ModSettings.ShowCitizenWealth]": "Anzeigen wie wohlhabend ein Bürger gerade ist.",
@@ -114,5 +118,6 @@
   "extendedtooltip.setting.growables.description": "Verwalte Tooltips für Gebäudezonen wie Wohn-, Gewerbe-, Büro- und Industriebauten.",
   "Options.OPTION[ExtendedTooltip.ExtendedTooltip.Mod.ModSettings.DisplayModeDelayOnMoveables]": "Auf bewegliche Objekte",
   "Options.OPTION_DESCRIPTION[ExtendedTooltip.ExtendedTooltip.Mod.ModSettings.DisplayModeDelayOnMoveables]": "Aktiviert die Verzögerung auch bei beweglichen Objekten wie Bürgern oder Fahrzeugen.",
-  "SelectedInfoPanel.LOT_SIZE": "Grundstück"
+  "SelectedInfoPanel.LOT_SIZE": "Grundstück",
+  "SelectedInfoPanel.CITIZEN_SHIFT": "Schicht"
 }

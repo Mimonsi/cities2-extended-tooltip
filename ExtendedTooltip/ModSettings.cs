@@ -102,6 +102,8 @@ namespace ExtendedTooltip
 		[SettingsUISection(TAB_TOOLTIPS, GRP_CITIZEN)]
 		public bool ShowCitizenState { get; set; } = true;
 		[SettingsUISection(TAB_TOOLTIPS, GRP_CITIZEN)]
+		public bool ShowCitizenShift { get; set; } = true;
+		[SettingsUISection(TAB_TOOLTIPS, GRP_CITIZEN)]
 		public bool ShowCitizenWealth { get; set; } = true;
 		[SettingsUISection(TAB_TOOLTIPS, GRP_CITIZEN)]
 		public bool ShowCitizenType { get; set; } = true;

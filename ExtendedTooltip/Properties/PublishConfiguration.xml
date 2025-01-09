@@ -39,11 +39,14 @@ Thanks to TDW for their efforts to migrate this mod and apply various improvemen
 	<Screenshot Value="Properties/Screenshot_08.png" />
 	<Tag Value="Code Mod" />
 	<ForumLink Value="https://forum.paradoxplaza.com/forum/threads/extendedtooltip.1657861/" />
-	<ModVersion Value="1.6.0" />
+	<ModVersion Value="1.6.1" />
 	<GameVersion Value="1.2.*" />
 	<ChangeLog>
-- Add Parking Capacity display for buildings with integrated parking
+- Fixed missing tooltips for non-residential buildings
+- Updated Parking Lot Utilization text to be more clear
+- Updated Parking Lot Utilization icon
 	</ChangeLog>
 	<ExternalLink Type="discord" Url="https://discord.com/invite/HTav7ARPs2" />
 	<ExternalLink Type="github" Url="https://github.com/Mimonsi/cities2-extended-tooltip" />
+	<ExternalLink Type="ko-fi" Url="https://ko-fi.com/mimonsi" />
 </Publish>

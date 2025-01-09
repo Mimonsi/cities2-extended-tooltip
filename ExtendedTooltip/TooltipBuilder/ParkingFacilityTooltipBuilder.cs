@@ -78,7 +78,8 @@ namespace ExtendedTooltip.TooltipBuilder
 				var parkingOccupationPercentage = parkedCars == 0 ? 0 : Convert.ToInt16(math.round(parkedCars * 100 / parkingCapacity));
 				StringTooltip parkingOccupationTooltip = new()
 				{
-					icon = "Media/Game/Icons/Traffic.svg",
+					//icon = "Media/Game/Icons/Traffic.svg",
+					icon = "Media/Game/Icons/Parking.svg",
 					value = $"{m_CustomTranslationSystem.GetTranslation("parkinglots.utilization", "Utilization")}: {parkingOccupationPercentage}% [{parkedCars}/{parkingCapacity}]",
 					color = (parkingOccupationPercentage <= 75) ? TooltipColor.Success : (parkingOccupationPercentage <= 90) ? TooltipColor.Warning : TooltipColor.Error,
 				};

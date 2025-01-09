@@ -261,11 +261,10 @@ namespace ExtendedTooltip.Systems
 					try
 					{
 						m_ParkingFacilityTooltipBuilder.Build(selectedEntity, m_PrimaryETGroup);
-						return;
 					}
-					catch (Exception)
+					catch (Exception x)
 					{
-
+						Mod.Log.Error("Failed to build ParkingFacilityTooltip: " + x);
 					}
 				}
 			}

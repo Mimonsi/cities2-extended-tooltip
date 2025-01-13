@@ -80,7 +80,7 @@
   "Options.OPTION[ExtendedTooltip.ExtendedTooltip.Mod.ModSettings.ShowCitizenState]": "Citizen State",
   "Options.OPTION_DESCRIPTION[ExtendedTooltip.ExtendedTooltip.Mod.ModSettings.ShowCitizenState]": "Shows the current state of the citizen.",
   "Options.OPTION[ExtendedTooltip.ExtendedTooltip.Mod.ModSettings.ShowCitizenShift]": "Citizen Shift",
-  "Options.OPTION_DESCRIPTION[ExtendedTooltip.ExtendedTooltip.Mod.ModSettings.ShowCitizenshift]": "Shows shift the citizen works in.",
+  "Options.OPTION_DESCRIPTION[ExtendedTooltip.ExtendedTooltip.Mod.ModSettings.ShowCitizenShift]": "Shows shift the citizen works in.",
   "Options.OPTION[ExtendedTooltip.ExtendedTooltip.Mod.ModSettings.ShowCitizenHappiness]": "Citizen Happiness",
   "Options.OPTION_DESCRIPTION[ExtendedTooltip.ExtendedTooltip.Mod.ModSettings.ShowCitizenHappiness]": "Shows how happy the selected citizen currently is.",
   "Options.OPTION[ExtendedTooltip.ExtendedTooltip.Mod.ModSettings.ShowCitizenEducation]": "Citizen Education",

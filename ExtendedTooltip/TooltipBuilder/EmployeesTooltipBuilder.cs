@@ -54,7 +54,8 @@ namespace ExtendedTooltip.TooltipBuilder
 					value = m_CustomTranslationSystem.GetLocalGameTranslation("SelectedInfoPanel.EMPLOYEES", "Employees") + ": " + employeeCount + "/" + maxEmployees,
 					color = (employeeCountPercentage == 0) ? TooltipColor.Info : (employeeCountPercentage <= 90) ? TooltipColor.Warning : TooltipColor.Success,
 				};
-
+				if (Mod.Settings.DisableTooltipIcons)
+					employeeTooltip.icon = null;
 				tooltipGroup.children.Add(employeeTooltip);
 			}
 		}

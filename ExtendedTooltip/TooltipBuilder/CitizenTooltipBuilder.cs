@@ -35,6 +35,8 @@ namespace ExtendedTooltip.TooltipBuilder
 					value = $"{m_CustomTranslationSystem.GetLocalGameTranslation($"SelectedInfoPanel.CITIZEN_STATE[{stateKey}]", "Unknown")}",
 					color = TooltipColor.Info,
 				};
+				if (model.DisableTooltipIcons)
+					stateTooltip.icon = null;
 				tooltipGroup.children.Add(stateTooltip);
 			}
 
@@ -62,6 +64,8 @@ namespace ExtendedTooltip.TooltipBuilder
 						value = $"{citizenTypeValue}",
 						color = TooltipColor.Info,
 					};
+					if (model.DisableTooltipIcons)
+						citizenTypeTooltip.icon = null;
 					(model.UseExtendedLayout ? secondaryTooltipGroup : tooltipGroup).children.Add(citizenTypeTooltip);
 				}
 
@@ -83,6 +87,8 @@ namespace ExtendedTooltip.TooltipBuilder
 						value = $"{wealthLabel}: {wealthValue}",
 						color = tooltipColor,
 					};
+					if (model.DisableTooltipIcons)
+						wealthTooltip.icon = null;
 					(model.UseExtendedLayout ? secondaryTooltipGroup : tooltipGroup).children.Add(wealthTooltip);
 				}
 			}
@@ -112,6 +118,8 @@ namespace ExtendedTooltip.TooltipBuilder
 					value = $"{happinessLabelString}: {happinessValueString}",
 					color = happinessValue < 50 ? TooltipColor.Error : happinessValue < 75 ? TooltipColor.Warning : TooltipColor.Success
 				};
+				if (model.DisableTooltipIcons)
+					happinessTooltip.icon = null;
 				tooltipGroup.children.Add(happinessTooltip);
 			}
 
@@ -127,6 +135,8 @@ namespace ExtendedTooltip.TooltipBuilder
 					value = $"{educationLabelString}: {educationValueString}",
 					color = TooltipColor.Info,
 				};
+				if (model.DisableTooltipIcons)
+					educationTooltip.icon = null;
 				tooltipGroup.children.Add(educationTooltip);
 			}
 
@@ -142,6 +152,8 @@ namespace ExtendedTooltip.TooltipBuilder
 						value = $"{m_CustomTranslationSystem.GetLocalGameTranslation($"SelectedInfoPanel.CITIZEN_SHIFT", "Shift")}: {shiftLocalization}",
 						color = TooltipColor.Info,
 					};
+					if (model.DisableTooltipIcons)
+						shiftTooltip.icon = null;
 					(model.UseExtendedLayout ? secondaryTooltipGroup : tooltipGroup).children.Add(shiftTooltip);
 				}
 			}

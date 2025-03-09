@@ -55,6 +55,9 @@ namespace ExtendedTooltip
 		public bool DisplayModeDelayOnMoveables { get; set; } = false;
 		private bool HideDisplayDelay() => DisplayMode != DisplayMode.Delayed;
 
+		[SettingsUISection(TAB_GENERAL, "")]
+		public bool DisableTooltipIcons { get; set; }
+
 		// GENERAL
 		[SettingsUISection(TAB_TOOLTIPS, GRP_GENERAL)]
 		public bool ShowEfficiency { get; set; } = true;

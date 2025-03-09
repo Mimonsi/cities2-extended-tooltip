@@ -29,6 +29,8 @@ namespace ExtendedTooltip.TooltipBuilder
 				icon = "Media/Game/Icons/LotTool.svg",
 				value = m_CustomTranslationSystem.GetLocalGameTranslation("SelectedInfoPanel.LOT_SIZE", "Lot Size") + ": " + lotSize.x + "x" + lotSize.y,
 			};
+			if (Mod.Settings.DisableTooltipIcons)
+				plotSizeTooltip.icon = null;
 			tooltipGroup.children.Add(plotSizeTooltip);
 		}
 

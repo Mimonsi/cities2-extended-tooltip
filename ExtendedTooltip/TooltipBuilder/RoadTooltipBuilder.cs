@@ -165,6 +165,8 @@ namespace ExtendedTooltip.TooltipBuilder
 					value = m_CustomTranslationSystem.GetLocalGameTranslation("SelectedInfoPanel.LINE_VISUALIZER_LENGTH", "Length") + ": " +
 					m_CustomTranslationSystem.GetLocalGameTranslation(lengthFormat == 1 ? "Common.VALUE_KILOMETER" : "Common.VALUE_METER", lengthFormat == 1 ? " km" : " m", "SIGN", "", "VALUE", finalLength)
 				};
+				if (Mod.Settings.DisableTooltipIcons)
+					lengthTooltip.icon = null;
 				tooltipGroup.children.Add(lengthTooltip);
 			}
 
@@ -181,6 +183,8 @@ namespace ExtendedTooltip.TooltipBuilder
 						"VALUE", finalUpkeep.ToString()
 					),
 				};
+				if (Mod.Settings.DisableTooltipIcons)
+					upkeepTooltip.icon = null;
 				tooltipGroup.children.Add(upkeepTooltip);
 			}
 
@@ -200,6 +204,8 @@ namespace ExtendedTooltip.TooltipBuilder
 					value = m_CustomTranslationSystem.GetLocalGameTranslation("SelectedInfoPanel.ROAD_CONDITION", "Condition") + ": ~" + finalAvgCondition + $"% ({finalWorstCondition}% - {finalBestCondition}%)",
 					color = finalAvgCondition < 66 ? TooltipColor.Error : finalAvgCondition < 85 ? TooltipColor.Warning : finalAvgCondition < 95 ? TooltipColor.Info : TooltipColor.Success,
 				};
+				if (Mod.Settings.DisableTooltipIcons)
+					conditionTooltip.icon = null;
 				tooltipGroup.children.Add(conditionTooltip);
 			}
 		}

@@ -25,6 +25,8 @@ namespace ExtendedTooltip.TooltipBuilder
 				value = m_CustomTranslationSystem.GetLocalGameTranslation("SelectedInfoPanel.EFFICIENCY", "Efficiency") + ": " + efficiency + "%",
 				color = efficiency <= 99 ? TooltipColor.Warning : TooltipColor.Success,
 			};
+			if (Mod.Settings.DisableTooltipIcons)
+				efficiencyTooltip.icon = null;
 			tooltipGroup.children.Add(efficiencyTooltip);
 		}
 

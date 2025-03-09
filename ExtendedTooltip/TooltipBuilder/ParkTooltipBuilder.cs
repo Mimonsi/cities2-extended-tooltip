@@ -40,6 +40,8 @@ namespace ExtendedTooltip.TooltipBuilder
 				value = $"{m_CustomTranslationSystem.GetLocalGameTranslation("SelectedInfoPanel.PARK_MAINTENANCE", "Maintenence")}: {maintenance}%",
 				color = maintenance <= 40 ? TooltipColor.Error : maintenance <= 60 ? TooltipColor.Warning : TooltipColor.Success,
 			};
+			if (Mod.Settings.DisableTooltipIcons)
+				parkTooltip.icon = null;
 			tooltipGroup.children.Add(parkTooltip);
 		}
 	}

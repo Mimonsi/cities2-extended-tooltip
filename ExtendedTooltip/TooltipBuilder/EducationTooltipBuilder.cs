@@ -46,7 +46,8 @@ namespace ExtendedTooltip.TooltipBuilder
 					value = m_CustomTranslationSystem.GetLocalGameTranslation("SelectedInfoPanel.EDUCATION_STUDENTS", "Students") + ": " + studentCount + "/" + studentCapacity,
 					color = (studentCount == 0) ? TooltipColor.Info : (studentCount * 100 / studentCapacity) <= 50 ? TooltipColor.Success : (studentCount * 100 / studentCapacity) <= 90 ? TooltipColor.Warning : TooltipColor.Error,
 				};
-
+				if (Mod.Settings.DisableTooltipIcons)
+					studentTooltip.icon = null;
 				tooltipGroup.children.Add(studentTooltip);
 			}
 		}

@@ -54,6 +54,8 @@ namespace ExtendedTooltip.TooltipBuilder
 							value = $"{m_CustomTranslationSystem.GetLocalGameTranslation($"SelectedInfoPanel.CITIZEN_STATE[{stateKey}]", "Unknown")}",
 							color = TooltipColor.Info,
 						};
+						if (Mod.Settings.DisableTooltipIcons)
+							stateTooltip.icon = null;
 						tooltipGroup.children.Add(stateTooltip);
 					}
 				}
@@ -67,6 +69,8 @@ namespace ExtendedTooltip.TooltipBuilder
 						icon = "Media/Game/Icons/AdvisorInfoView.svg",
 						value = finalStateValueString,
 					};
+					if (Mod.Settings.DisableTooltipIcons)
+						vehicleStateTooltip.icon = null;
 					tooltipGroup.children.Add(vehicleStateTooltip);
 				}
 			}
@@ -86,6 +90,8 @@ namespace ExtendedTooltip.TooltipBuilder
 					icon = "Media/Game/Icons/DeliveryVan.svg",
 					value = $"{finalResourceLabelString}: {collectedGarbage.ToString("F", CultureInfo.InvariantCulture)} / {garbageCapacity.ToString("F", CultureInfo.InvariantCulture)} t",
 				};
+				if (Mod.Settings.DisableTooltipIcons)
+					garbageTruckTooltip.icon = null;
 				tooltipGroup.children.Add(garbageTruckTooltip);
 			}
 
@@ -108,6 +114,8 @@ namespace ExtendedTooltip.TooltipBuilder
 					icon = "Media/Game/Icons/DeliveryVan.svg",
 					value = $"{finalDeliveredLabelString}: {toDeliverMailString} t",
 				};
+				if (Mod.Settings.DisableTooltipIcons)
+					toDeliverTooltip.icon = null;
 				tooltipGroup.children.Add(toDeliverTooltip);
 
 				var finalCollectedLabelString = m_CustomTranslationSystem.GetTranslation("mail.collected", "Collected");
@@ -116,6 +124,8 @@ namespace ExtendedTooltip.TooltipBuilder
 					icon = "Media/Game/Icons/DeliveryVan.svg",
 					value = $"{finalCollectedLabelString}: {collectedMailString} t",
 				};
+				if (Mod.Settings.DisableTooltipIcons)
+					collectedTooltip.icon = null;
 				tooltipGroup.children.Add(collectedTooltip);
 
 				var finalCapacityLabelString = m_CustomTranslationSystem.GetTranslation("mail.capacity", "Capacity");
@@ -124,6 +134,8 @@ namespace ExtendedTooltip.TooltipBuilder
 					icon = "Media/Game/Icons/DeliveryVan.svg",
 					value = $"{finalCapacityLabelString}: {combinedMailString} / {capacityString} t",
 				};
+				if (Mod.Settings.DisableTooltipIcons)
+					postCapacityTooltip.icon = null;
 				tooltipGroup.children.Add(postCapacityTooltip);
 			}
 
@@ -214,6 +226,8 @@ namespace ExtendedTooltip.TooltipBuilder
 					icon = "Media/Game/Icons/Population.svg",
 					value = $"{tooltipTitle}: {passengers}/{maxPassengers}",
 				};
+				if (Mod.Settings.DisableTooltipIcons)
+					vehicleCapacityTooltip.icon = null;
 				tooltipGroup.children.Add(vehicleCapacityTooltip);
 			}
 		}

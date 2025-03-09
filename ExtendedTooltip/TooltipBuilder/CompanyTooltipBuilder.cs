@@ -52,6 +52,8 @@ namespace ExtendedTooltip.TooltipBuilder
 					value = $"{profitabilityLabel}: {profitabilityValue} ({(int)companyProfitability.m_Profitability})",
 					color = tooltipColor
 				};
+				if (model.DisableTooltipIcons)
+					profitabilityTooltip.icon = null;
 				if (!model.ShowCompanyProfitabilityAbsolute)
 				{
 					// Use percentage value
@@ -106,6 +108,8 @@ namespace ExtendedTooltip.TooltipBuilder
 						icon = "Media/Game/Icons/Money.svg",
 						color = companyBalance < 0 ? TooltipColor.Error : TooltipColor.Info,
 					};
+					if (model.DisableTooltipIcons)
+						companyBalanceTooltip.icon = null;
 					(model.UseExtendedLayout && !IsMixed ? secondaryTooltipGroup : tooltipGroup).children.Add(companyBalanceTooltip);
 				}
 			}
@@ -129,6 +133,8 @@ namespace ExtendedTooltip.TooltipBuilder
 					value = $"{rentLabel}: {rentValue}",
 					color = TooltipColor.Info,
 				};
+				if (model.DisableTooltipIcons)
+					rentTooltip.icon = null;
 				(model.UseExtendedLayout && !IsMixed ? secondaryTooltipGroup : tooltipGroup).children.Add(rentTooltip);
 			}
 		}
@@ -171,7 +177,8 @@ namespace ExtendedTooltip.TooltipBuilder
 
 			var resourceValue = m_CustomTranslationSystem.GetLocalGameTranslation($"Resources.TITLE[{resource}]", resource.ToString());
 			GetCompanyOutputResource(companyResources, resource, out var resourceAmount);
-			companyResourceTooltip.icon = "Media/Game/Resources/" + resource.ToString() + ".svg";
+			if (!Mod.Settings.DisableTooltipIcons)
+				companyResourceTooltip.icon = "Media/Game/Resources/" + resource.ToString() + ".svg";
 			if (resourceAmount > 0 && !isBulldozing)
 			{
 				// TODO: Fix actual translations issue #1

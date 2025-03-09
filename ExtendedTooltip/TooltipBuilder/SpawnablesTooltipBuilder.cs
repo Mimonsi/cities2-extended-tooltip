@@ -95,6 +95,8 @@ namespace ExtendedTooltip.TooltipBuilder
 					icon = "Media/Game/Icons/Zones.svg",
 					value = finalZoneName,
 				};
+				if (Mod.Settings.DisableTooltipIcons)
+					zoneTooltip.icon = null;
 				(model.UseExtendedLayout ? secondaryTooltipGroup : tooltipGroup).children.Add(zoneTooltip);
 			}
 
@@ -126,6 +128,8 @@ namespace ExtendedTooltip.TooltipBuilder
 					value = $"{buildingLevelLabel}: {buildingLevelValue}",
 					color = buildingLevelColor
 				};
+				if (Mod.Settings.DisableTooltipIcons)
+					levelTooltip.icon = null;
 				(model.UseExtendedLayout && isMixed ? secondaryTooltipGroup : tooltipGroup).children.Add(levelTooltip);
 			}
 
@@ -148,6 +152,8 @@ namespace ExtendedTooltip.TooltipBuilder
 						icon = "Media/Game/Icons/LandValue.svg",
 						color = landValueTooltipColor
 					};
+					if (Mod.Settings.DisableTooltipIcons)
+						landValueTooltip.icon = null;
 					(model.UseExtendedLayout && isMixed ? secondaryTooltipGroup : tooltipGroup).children.Add(landValueTooltip);
 				}
 			}
@@ -173,6 +179,8 @@ namespace ExtendedTooltip.TooltipBuilder
 						value = finalInfoString,
 						color = householdTooltipColor
 					};
+					if (Mod.Settings.DisableTooltipIcons)
+						householdTooltip.icon = null;
 					(model.UseExtendedLayout && isMixed ? secondaryTooltipGroup : tooltipGroup).children.Add(householdTooltip);
 				}
 
@@ -198,6 +206,8 @@ namespace ExtendedTooltip.TooltipBuilder
 						value = $"{wealthLabel}: {wealthValue}",
 						color = tooltipColor,
 					};
+					if (Mod.Settings.DisableTooltipIcons)
+						wealthTooltip.icon = null;
 					(model.UseExtendedLayout ? secondaryTooltipGroup : tooltipGroup).children.Add(wealthTooltip);
 				}
 
@@ -230,7 +240,8 @@ namespace ExtendedTooltip.TooltipBuilder
 						value = $"{balanceLabel}: {balanceValue}",
 						color = (householdCount > 1 && minBalance < 0 && maxBalance < 0) || (householdCount == 1 && finalBalance < 0) ? TooltipColor.Error : TooltipColor.Info,
 					};
-
+					if (Mod.Settings.DisableTooltipIcons)
+						balanceTooltip.icon = null;
 					(model.UseExtendedLayout ? secondaryTooltipGroup : tooltipGroup).children.Add(balanceTooltip);
 				}
 
@@ -261,7 +272,8 @@ namespace ExtendedTooltip.TooltipBuilder
 						value = $"{rentLabel}: {rentValue}",
 						color = TooltipColor.Info,
 					};
-
+					if (Mod.Settings.DisableTooltipIcons)
+						rentTooltip.icon = null;
 					(model.UseExtendedLayout ? secondaryTooltipGroup : tooltipGroup).children.Add(rentTooltip);
 				}
 			}

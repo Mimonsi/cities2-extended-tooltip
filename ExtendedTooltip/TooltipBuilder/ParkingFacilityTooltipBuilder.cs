@@ -64,6 +64,8 @@ namespace ExtendedTooltip.TooltipBuilder
 					icon = "Media/Game/Icons/ServiceFees.svg",
 					value = $"{m_CustomTranslationSystem.GetLocalGameTranslation("Policy.TITLE[Lot Parking Fee]")}: {m_CustomTranslationSystem.GetLocalGameTranslation("Common.VALUE_MONEY", "€", "SIGN", "", "VALUE", parkingFee.ToString())}",
 				};
+				if (Mod.Settings.DisableTooltipIcons)
+					parkingFeesTooltip.icon = null;
 				tooltipGroup.children.Add(parkingFeesTooltip);
 			}
 
@@ -83,6 +85,8 @@ namespace ExtendedTooltip.TooltipBuilder
 					value = $"{m_CustomTranslationSystem.GetTranslation("parkinglots.utilization", "Utilization")}: {parkingOccupationPercentage}% [{parkedCars}/{parkingCapacity}]",
 					color = (parkingOccupationPercentage <= 75) ? TooltipColor.Success : (parkingOccupationPercentage <= 90) ? TooltipColor.Warning : TooltipColor.Error,
 				};
+				if (Mod.Settings.DisableTooltipIcons)
+					parkingOccupationTooltip.icon = null;
 				tooltipGroup.children.Add(parkingOccupationTooltip);
 			}
 		}

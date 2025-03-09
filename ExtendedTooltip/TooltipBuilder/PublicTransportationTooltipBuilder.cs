@@ -41,6 +41,8 @@ namespace ExtendedTooltip.TooltipBuilder
 					icon = "Media/Game/Icons/Population.svg",
 					value = $"{m_CustomTranslationSystem.GetLocalGameTranslation("SelectedInfoPanel.WAITING_PASSENGERS", "Waiting passengers")}: {waitingPassengers}",
 				};
+				if (Mod.Settings.DisableTooltipIcons)
+					waitingPassengersTooltip.icon = null;
 				tooltipGroup.children.Add(waitingPassengersTooltip);
 			}
 
@@ -66,6 +68,8 @@ namespace ExtendedTooltip.TooltipBuilder
 					value = $"{m_CustomTranslationSystem.GetTranslation("average_waiting_time", "~ waiting time")}: {averageWaitingTime}{unit}",
 					color = tooltipColor,
 				};
+				if (Mod.Settings.DisableTooltipIcons)
+					averageWaitingTimeTooltip.icon = null;
 				tooltipGroup.children.Add(averageWaitingTimeTooltip);
 			}
 		}

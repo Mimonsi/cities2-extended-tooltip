@@ -20,8 +20,8 @@ using Game.Vehicles;
 using Game.Zones;
 
 using System;
+using System.Linq;
 using System.Reflection;
-
 using Unity.Entities;
 using Unity.Mathematics;
 
@@ -59,6 +59,7 @@ namespace ExtendedTooltip.Systems
 		private EmployeesTooltipBuilder m_EmployeesTooltipBuilder;
 		private EducationTooltipBuilder m_EducationTooltipBuilder;
 		private CompanyTooltipBuilder m_CompanyTooltipBuilder;
+		private TooltipUISystem m_TooltipUISystem;
 
 
 		public ExtendedTooltipSystem()
@@ -77,6 +78,7 @@ namespace ExtendedTooltip.Systems
 			m_ToolRaycastSystem = World.GetOrCreateSystemManaged<ToolRaycastSystem>();
 			m_PrefabSystem = World.GetOrCreateSystemManaged<PrefabSystem>();
 			m_CustomTranslationSystem = World.GetOrCreateSystemManaged<CustomTranslationSystem>();
+			m_TooltipUISystem = World.GetOrCreateSystemManaged<TooltipUISystem>();
 			m_CitizenHappinessParameterDataQuery = GetEntityQuery(new ComponentType[] { ComponentType.ReadOnly<CitizenHappinessParameterData>() });
 
 			m_CitizenTooltipBuilder = new(EntityManager, m_CustomTranslationSystem);
@@ -144,6 +146,18 @@ namespace ExtendedTooltip.Systems
 							var i = 1;
 							foreach (var tooltip in m_PrimaryETGroup.children)
 							{
+								// TODO: Find reason for this error
+								/*if (m_TooltipUISystem.mouseGroup.children.Any(t => t.path == tooltip.path))
+								{
+									// Tooltip already exists in the mouse group
+									var message = "Tooltip already exists in the mouse group, this should not happen. Tooltip List: ";
+									foreach (var t in m_TooltipUISystem.mouseGroup.children)
+									{
+										message += t.path + ", ";
+									}
+									Mod.Log.Debug(message);
+									return;
+								}*/
 								tooltip.path = "etPrimaryTooltip" + i;
 								AddMouseTooltip(tooltip);
 								i++;

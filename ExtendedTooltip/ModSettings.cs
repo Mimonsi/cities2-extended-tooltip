@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 
 namespace ExtendedTooltip
 {
-	[FileLocation($"ModsSettings/{nameof(ExtendedTooltip)}/{nameof(ExtendedTooltip)}")]
+	[FileLocation("ModsSettings/ExtendedTooltip/ExtendedTooltip")]
 	[SettingsUITabOrder(TAB_GENERAL, TAB_TOOLTIPS)]
 	[SettingsUIGroupOrder(GRP_GENERAL, GRP_COMPANY, GRP_TOOLS, GRP_CITIZEN, GRP_PARKS, GRP_PARKING, GRP_PUBLICTRANSPORT, GRP_ROADS, GRP_EDUCATION, GRP_GROWABLES, GRP_VEHICLES)]
 	[SettingsUIShowGroupName(GRP_GENERAL, GRP_COMPANY, GRP_TOOLS, GRP_CITIZEN, GRP_PARKS, GRP_PARKING, GRP_PUBLICTRANSPORT, GRP_ROADS, GRP_EDUCATION, GRP_GROWABLES, GRP_VEHICLES)]

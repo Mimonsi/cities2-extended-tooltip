@@ -57,7 +57,7 @@ namespace Game.UI.Tooltip
 
 		protected override void OnUpdate()
 		{
-			if (m_ToolSystem.activeTool == m_BulldozeTool && m_BulldozeTool.tooltip != BulldozeToolSystem.Tooltip.None)
+			if (m_ToolSystem.activeTool == m_BulldozeTool)
 			{
 				m_TooltipGroup.children.Clear();
 

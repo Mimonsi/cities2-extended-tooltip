@@ -10,7 +10,7 @@ namespace ExtendedTooltip.Systems
 {
 	public partial class ExtendedTooltipUISystem : UISystemBase
 	{
-		private readonly string kGroup = "89pleasure_extendedtooltip";
+		private readonly string kGroup = "extendedtooltip";
 		private CustomTranslationSystem m_CustomTranslationSystem;
 		public Dictionary<string, string> m_SettingLocalization;
 

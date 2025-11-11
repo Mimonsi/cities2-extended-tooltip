@@ -22,6 +22,7 @@ using Game.Zones;
 using System;
 using System.Linq;
 using System.Reflection;
+using Game.Objects;
 using Unity.Entities;
 using Unity.Mathematics;
 
@@ -51,6 +52,7 @@ namespace ExtendedTooltip.Systems
 		private VehicleTooltipBuilder m_VehicleTooltipBuilder;
 		private SpawnablesTooltipBuilder m_SpawnablesTooltipBuilder;
 		private LotSizeTooltipBuilder m_LotSizeTooltipBuilder;
+		private SpeedTooltipBuilder m_SpeedTooltipBuilder;
 		private RoadTooltipBuilder m_RoadTooltipBuilder;
 		private EfficiencyTooltipBuilder m_EfficiencyTooltipBuilder;
 		private ParkTooltipBuilder m_ParkTooltipBuilder;
@@ -86,6 +88,7 @@ namespace ExtendedTooltip.Systems
 			m_RoadTooltipBuilder = new(EntityManager, m_CustomTranslationSystem);
 			m_SpawnablesTooltipBuilder = new(EntityManager, m_CustomTranslationSystem, m_PrefabSystem);
 			m_LotSizeTooltipBuilder = new(EntityManager, m_CustomTranslationSystem);
+			m_SpeedTooltipBuilder = new(EntityManager, m_CustomTranslationSystem);
 			m_EfficiencyTooltipBuilder = new(EntityManager, m_CustomTranslationSystem);
 			m_ParkTooltipBuilder = new(EntityManager, m_CustomTranslationSystem);
 			m_ParkingFacilityTooltipBuilder = new(EntityManager, m_CustomTranslationSystem);
@@ -213,6 +216,18 @@ namespace ExtendedTooltip.Systems
 
 		private void CreateExtendedTooltips(Entity selectedEntity, Entity prefab)
 		{
+			// LOT SIZE TOOLTIP
+			if (Mod.Settings.ShowLotSize && EntityManager.HasComponent<PrefabRef>(selectedEntity))
+			{
+				m_LotSizeTooltipBuilder.Build(selectedEntity, m_PrimaryETGroup);
+			}
+			
+			// SPEED TOOLTIP
+			if (Mod.Settings.ShowSpeed && EntityManager.HasComponent<Moving>(selectedEntity)) // has returns false for cims, even though it has component?!
+			{
+				m_SpeedTooltipBuilder.Build(selectedEntity, m_PrimaryETGroup);
+			}
+			
 			// CITIZEN TOOLTIP
 			if (Mod.Settings.ShowCitizen && EntityManager.TryGetComponent<Citizen>(selectedEntity, out var citizen))
 			{
@@ -242,11 +257,6 @@ namespace ExtendedTooltip.Systems
 			{
 				var citizenHappinessParameters = m_CitizenHappinessParameterDataQuery.GetSingleton<CitizenHappinessParameterData>();
 				m_SpawnablesTooltipBuilder.Build(m_DefaultTool, IsMixed, selectedEntity, prefab, buildingLevel, currentCondition, levelingCost, spawnableData, citizenHappinessParameters, m_PrimaryETGroup, m_SecondaryETGroup);
-			}
-
-			if (Mod.Settings.ShowLotSize && EntityManager.HasComponent<PrefabRef>(selectedEntity))
-			{
-				m_LotSizeTooltipBuilder.Build(selectedEntity, m_PrimaryETGroup);
 			}
 
 			// EFFICIENCY TOOLTIP

@@ -9,6 +9,13 @@ using UnityEngine.InputSystem;
 
 namespace ExtendedTooltip
 {
+	public enum SpeedUnitSetting
+	{
+		Default,
+		Kph,
+		Mph
+	}
+	
 	[FileLocation("ModsSettings/ExtendedTooltip/ExtendedTooltip")]
 	[SettingsUITabOrder(TAB_GENERAL, TAB_TOOLTIPS)]
 	[SettingsUIGroupOrder(GRP_GENERAL, GRP_COMPANY, GRP_TOOLS, GRP_CITIZEN, GRP_PARKS, GRP_PARKING, GRP_PUBLICTRANSPORT, GRP_ROADS, GRP_EDUCATION, GRP_GROWABLES, GRP_VEHICLES)]
@@ -183,6 +190,18 @@ namespace ExtendedTooltip
 		public bool ShowVehicleGarbageTruck { get; set; } = true;
 		[SettingsUISection(TAB_TOOLTIPS, GRP_VEHICLES)]
 		public bool ShowVehiclePassengerDetails { get; set; } = true;
+		
+		[SettingsUISection(TAB_TOOLTIPS, GRP_VEHICLES)]
+		public bool ShowSpeed { get; set; } = true;
+		
+		[SettingsUISection(TAB_TOOLTIPS, GRP_VEHICLES)]
+		[SettingsUIAdvanced]
+		[SettingsUIHideByCondition(typeof(Setting), nameof(ShowSpeed), true)]
+		public bool ShowActualSpeed { get; set; } = true;
+		
+		[SettingsUISection(TAB_TOOLTIPS, GRP_VEHICLES)]
+		[SettingsUIHideByCondition(typeof(Setting), nameof(ShowSpeed), true)]
+		public SpeedUnitSetting SpeedUnit { get; set; } = SpeedUnitSetting.Default;
 
 		public DropdownItem<int>[] GetModifierDropdownItems()
 		{

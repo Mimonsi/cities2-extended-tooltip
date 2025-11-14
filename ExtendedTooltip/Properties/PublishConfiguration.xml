@@ -39,10 +39,10 @@ Thanks to TDW for their efforts to migrate this mod and apply various improvemen
 	<Screenshot Value="Properties/Screenshot_08.png" />
 	<Tag Value="Code Mod" />
 	<ForumLink Value="https://forum.paradoxplaza.com/forum/threads/extendedtooltip.1657861/" />
-	<ModVersion Value="1.6.4" />
+	<ModVersion Value="1.6.5" />
 	<GameVersion Value="1.3.6*" />
 	<ChangeLog>
-- Recompiled for Patch 1.3.6f1
+- Add Tooltip for vehicle speeds
 	</ChangeLog>
 	<ExternalLink Type="discord" Url="https://discord.com/invite/HTav7ARPs2" />
 	<ExternalLink Type="github" Url="https://github.com/Mimonsi/cities2-extended-tooltip" />

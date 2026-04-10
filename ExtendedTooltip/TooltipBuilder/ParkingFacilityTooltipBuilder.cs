@@ -52,12 +52,9 @@ namespace ExtendedTooltip.TooltipBuilder
 			}
 
 			// Only if activated
-			if (model.ShowParkingFees && parkingFee > 0)
+			if (model.ShowParkingFees && parkingFee > 0 && laneCount > 0)
 			{
-				if (laneCount != 0)
-				{
-					parkingFee /= laneCount;
-				}
+				parkingFee /= laneCount;
 
 				StringTooltip parkingFeesTooltip = new()
 				{

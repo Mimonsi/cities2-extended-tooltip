@@ -9,7 +9,6 @@ namespace ExtendedTooltip.TooltipBuilder
 {
 	public class VehiclePropertiesTooltipBuilder : TooltipBuilderBase
 	{
-		PrefabSystem prefabSystem => m_EntityManager.World.GetOrCreateSystemManaged<PrefabSystem>();
 		public VehiclePropertiesTooltipBuilder(EntityManager entityManager, CustomTranslationSystem customTranslationSystem)
 		: base(entityManager, customTranslationSystem)
 		{
@@ -23,31 +22,21 @@ namespace ExtendedTooltip.TooltipBuilder
 			{
 				if (m_EntityManager.TryGetComponent(prefabRef.m_Prefab, out CarData data))
 				{
-					var speedTooltip = new StringTooltip
+					var maxSpeedLabel = m_CustomTranslationSystem.GetTranslation("vehicleproperties.maxspeed",    "Max Speed");
+					var accelerationLabel = m_CustomTranslationSystem.GetTranslation("vehicleproperties.acceleration", "Acceleration");
+					var brakingLabel = m_CustomTranslationSystem.GetTranslation("vehicleproperties.braking",     "Braking");
+
+					var propertiesTooltip = new StringTooltip
 					{
-						// Electricity.svg
 						icon = "Media/Game/Icons/AdvancedElectricity.svg",
-						value = $"MaxSpeed: {UnitHelper.FormatSpeedLimit(data.m_MaxSpeed)}, Acceleration: {data.m_Acceleration}, Braking: {data.m_Braking}"
+						value = $"{maxSpeedLabel}: {UnitHelper.FormatSpeedLimit(data.m_MaxSpeed)}, " +
+						        $"{accelerationLabel}: {data.m_Acceleration}, " +
+						        $"{brakingLabel}: {data.m_Braking}"
 					};
-					tooltipGroup.children.Add(speedTooltip);
+
+					tooltipGroup.children.Add(propertiesTooltip);
 				}
-				// if (prefabSystem.TryGetPrefab(prefabRef.m_Prefab, out PrefabBase prefab))
-				// {
-				//
-				// }
 			}
-
-			
-		}
-
-		/// <summary>
-		/// Returns raw speed
-		/// </summary>
-		/// <param name="entity"></param>
-		/// <returns></returns>
-		private float ConvertSpeed(float ms)
-		{
-			return ms * 3.6f; // m/s to km/h
 		}
 	}
 }

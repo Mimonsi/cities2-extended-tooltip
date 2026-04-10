@@ -283,21 +283,14 @@ namespace ExtendedTooltip.Systems
 			// PARKING FACILITY TOOLTIP
 			if (Mod.Settings.ShowParkingFacility)
 			{
-				if (EntityManager.HasComponent<Game.Buildings.ParkingFacility>(selectedEntity))
+				// if (EntityManager.HasComponent<Game.Buildings.ParkingFacility>(selectedEntity))
+				try
 				{
 					m_ParkingFacilityTooltipBuilder.Build(selectedEntity, m_PrimaryETGroup);
-					return; // don't have any other info. No need to check for other components
 				}
-				else
+				catch (Exception x)
 				{
-					try
-					{
-						m_ParkingFacilityTooltipBuilder.Build(selectedEntity, m_PrimaryETGroup);
-					}
-					catch (Exception x)
-					{
-						Mod.Log.Error("Failed to build ParkingFacilityTooltip: " + x);
-					}
+					Mod.Log.Warn("Failed to build ParkingFacilityTooltip: " + x);
 				}
 			}
 

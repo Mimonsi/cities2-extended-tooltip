@@ -39,7 +39,7 @@ namespace ExtendedTooltip.TooltipBuilder
 			}
 
 			// Needs revisiting, not working
-			if ((model.ShowCitizenWealth || model.ShowCitizenType) & m_EntityManager.TryGetComponent(entity, out HouseholdMember householdMember))
+			if ((model.ShowCitizenWealth || model.ShowCitizenType) && m_EntityManager.TryGetComponent(entity, out HouseholdMember householdMember))
 			{
 				var household = householdMember.m_Household;
 

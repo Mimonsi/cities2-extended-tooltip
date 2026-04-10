@@ -20,7 +20,7 @@ namespace ExtendedTooltip.TooltipBuilder
 
 		public void Build(Entity selectedEntity, Entity prefab, TooltipGroup tooltipGroup)
 		{
-			if (Mod.Settings.ShowEducationStudentCapacity == false)
+			if (!Mod.Settings.ShowEducationStudentCapacity)
 			{
 				return;
 			}

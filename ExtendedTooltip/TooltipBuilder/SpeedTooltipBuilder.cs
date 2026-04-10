@@ -21,10 +21,9 @@ namespace ExtendedTooltip.TooltipBuilder
 			if (speed == 0)
 				return;
 			
-			var rawSpeed = GetSpeed(entity);
 			if (!Mod.Settings.ShowActualSpeed)
-				rawSpeed = rawSpeed / 2;
-			var speedString = UnitHelper.FormatSpeedLimit(rawSpeed); //Do some processing. The ingame speed is actually twice the real speed in m/s, so the conversion rate is weird.
+				speed = speed / 2;
+			var speedString = UnitHelper.FormatSpeedLimit(speed); //Do some processing. The ingame speed is actually twice the real speed in m/s, so the conversion rate is weird.
 			
 			var speedTooltip = new StringTooltip
 			{

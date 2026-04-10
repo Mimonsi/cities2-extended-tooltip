@@ -203,6 +203,10 @@ namespace ExtendedTooltip
 		[SettingsUIHideByCondition(typeof(ModSettings), nameof(ShowSpeed), true)]
 		public SpeedUnitSetting SpeedUnit { get; set; } = SpeedUnitSetting.Default;
 
+		[SettingsUISection(TAB_TOOLTIPS, GRP_VEHICLES)]
+		[SettingsUIAdvanced]
+		public bool ShowVehicleProperties { get; set; } = false;
+
 		public DropdownItem<int>[] GetModifierDropdownItems()
 		{
 			var items = new List<DropdownItem<int>>

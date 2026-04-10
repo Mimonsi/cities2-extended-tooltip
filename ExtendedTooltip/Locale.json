@@ -82,6 +82,8 @@
   "Options.ExtendedTooltip.ExtendedTooltip.Mod.SPEEDUNITSETTING[Default]": "Default",
   "Options.ExtendedTooltip.ExtendedTooltip.Mod.SPEEDUNITSETTING[Kph]": "km/h",
   "Options.ExtendedTooltip.ExtendedTooltip.Mod.SPEEDUNITSETTING[Mph]": "mph",
+  "Options.OPTION[ExtendedTooltip.ExtendedTooltip.Mod.ModSettings.ShowVehicleProperties]": "Show Vehicle properties",
+  "Options.OPTION_DESCRIPTION[ExtendedTooltip.ExtendedTooltip.Mod.ModSettings.ShowVehicleProperties]": "Shows Acceleration, Breaking and Max Speed for vehicles. Not needed for most players.",
   "Options.OPTION[ExtendedTooltip.ExtendedTooltip.Mod.ModSettings.ShowLandValue]": "Building Land Value",
   "Options.OPTION_DESCRIPTION[ExtendedTooltip.ExtendedTooltip.Mod.ModSettings.ShowLandValue]": "Shows land value of buildings.",
 

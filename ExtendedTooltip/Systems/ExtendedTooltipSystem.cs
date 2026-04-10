@@ -230,8 +230,8 @@ namespace ExtendedTooltip.Systems
 				m_SpeedTooltipBuilder.Build(selectedEntity, m_PrimaryETGroup);
 			}
 			
-			// VEHICLE PROPERTIES TOOLTIP
-			if (EntityManager.HasComponent<Car>(selectedEntity))
+			// VEHICLE PROPERTIES TOOLTIP, disabled by default
+			if (Mod.Settings.ShowVehicleProperties && EntityManager.HasComponent<Car>(selectedEntity))
 			{
 				m_VehiclePropertiesTooltipBuilder.Build(selectedEntity, m_PrimaryETGroup);
 			}

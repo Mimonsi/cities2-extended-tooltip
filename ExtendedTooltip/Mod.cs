@@ -1,4 +1,4 @@
-﻿using Colossal.IO.AssetDatabase;
+using Colossal.IO.AssetDatabase;
 using Colossal.Logging;
 
 using ExtendedTooltip.Systems;
@@ -19,6 +19,7 @@ namespace ExtendedTooltip
 		public const string Id = nameof(ExtendedTooltip);
 		private const string HarmonyId = "com.Konsi." + Id;
 		private Harmony harmony;
+		private System.Action<ProxyAction, InputActionPhase> toggleShowNetToolUnitsHandler;
 
 		public static ILog Log { get; } = LogManager.GetLogger(nameof(ExtendedTooltip)).SetShowsErrorsInUI(false);
 		public static ModSettings Settings { get; private set; }
@@ -40,8 +41,14 @@ namespace ExtendedTooltip
 			Settings.RegisterKeyBindings();
 			ToggleShowNetToolUnitsAction = Settings.GetAction("ToggleShowNetToolUnits");
 			ToggleShowNetToolUnitsAction.shouldBeEnabled = true;
-			ToggleShowNetToolUnitsAction.onInteraction += (_, phase) =>
-				Settings.ShowNetToolUnits = !Settings.ShowNetToolUnits;
+			toggleShowNetToolUnitsHandler = (_, phase) =>
+			{
+				if (phase == InputActionPhase.Performed)
+				{
+					Settings.ShowNetToolUnits = !Settings.ShowNetToolUnits;
+				}
+			};
+			ToggleShowNetToolUnitsAction.onInteraction += toggleShowNetToolUnitsHandler;
 
 			updateSystem.UpdateAt<CustomTranslationSystem>(SystemUpdatePhase.UIUpdate);
 			updateSystem.UpdateAt<ExtendedTooltipUISystem>(SystemUpdatePhase.UIUpdate);
@@ -58,6 +65,13 @@ namespace ExtendedTooltip
 			Log.Info(nameof(OnDispose));
 
 			harmony.UnpatchAll(HarmonyId);
+
+			if (ToggleShowNetToolUnitsAction != null && toggleShowNetToolUnitsHandler != null)
+			{
+				ToggleShowNetToolUnitsAction.onInteraction -= toggleShowNetToolUnitsHandler;
+				ToggleShowNetToolUnitsAction = null;
+				toggleShowNetToolUnitsHandler = null;
+			}
 
 			if (Settings != null)
 			{

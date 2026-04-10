@@ -1,31 +1,31 @@
 # Extended Tooltip
 
-This mod adds new information to the mouse hover tooltip of several entities to the game.
-If you want anything added to the tooltip, please let me know and open an issue.
+This mod adds more information to hover tooltips for a wide range of entities in Cities: Skylines II.
+If you want additional data in a tooltip, open an issue.
 
-> [!NOTE]  
-> This mod is originally created by **89pleasure**. He has given me permission to maintain and continue development on this mod.
+> [!NOTE]
+> This mod was originally created by **89pleasure**. Development continues here with permission from the original author.
 
 ## Current features
 
-Shows the following information on tooltips:
+The mod can show information such as:
 
 - Efficiency
 - Employees
-- Company produces/sells information
-- Citizen: Status, Happiness, State, Education, ect.
-- Schools: Students current/max
-- Public Transport: Waiting passengers, Average waiting time
-- Roads: Length, Upkeep, Conditions
-- Zones: Zone info, Households, Residents, Pets, Rent, Balance ect.
-- Vehicles: Driver, Passengers, Garbage Trucks info, Postvan info
-- many more
+- Company production and sales information
+- Citizens: status, happiness, state, education, and more
+- Schools: current and maximum students
+- Public transport: waiting passengers and average waiting time
+- Roads: length, upkeep, and condition
+- Zones: zone info, households, residents, pets, rent, balance, and more
+- Vehicles: driver, passengers, garbage truck details, post van details
+- Additional context-sensitive tooltip data across multiple systems
 
-## Pictures
+## Screenshots
 
 ### Citizen Tooltip
 
-![Citizen Tooltip](https://i.ibb.co/8mCPZNc/Screenshot-2023-11-12-011304.png)
+![Citizen Tooltip](ExtendedTooltip/Properties/Screenshot_01.png)
 
 - Activity
 - Happiness
@@ -33,7 +33,7 @@ Shows the following information on tooltips:
 
 ### School Tooltip
 
-![School Tooltip](https://i.ibb.co/zPZG1hf/Screenshot-2023-11-12-011318.png)
+![School Tooltip](ExtendedTooltip/Properties/Screenshot_02.png)
 
 - Efficiency
 - Employees
@@ -41,15 +41,15 @@ Shows the following information on tooltips:
 
 ### Company Tooltip
 
-![Company Tooltip](https://i.ibb.co/yQPmbrn/Screenshot-2023-11-12-011337.png)
+![Company Tooltip](ExtendedTooltip/Properties/Screenshot_03.png)
 
 - Efficiency
 - Employees
-- Resource to Sell/Produce
+- Resource to sell or produce
 
 ### Road Tooltip
 
-![Road Tooltip](https://i.ibb.co/fvPCKtB/Screenshot-2023-11-12-011357.png)
+![Road Tooltip](ExtendedTooltip/Properties/Screenshot_04.png)
 
 - Length
-- Upkeep /month
+- Upkeep per month

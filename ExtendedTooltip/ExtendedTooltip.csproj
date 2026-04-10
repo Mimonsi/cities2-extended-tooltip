@@ -1,12 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
 		<LangVersion>latest</LangVersion>
 		<TargetFramework>net472</TargetFramework>
 		<Configurations>Debug;Release</Configurations>
-		<Version>1.1.0</Version>
-		<FileVersion>1.6.7</FileVersion>
-		<AssemblyVersion>1.6.7</AssemblyVersion>
+		<Version>1.7.0</Version>
+		<FileVersion>1.7.0</FileVersion>
+		<AssemblyVersion>1.7.0</AssemblyVersion>
 		<Copyright>@2024 MIT license</Copyright>
 		<Product>Extended Tooltip</Product>
 	</PropertyGroup>

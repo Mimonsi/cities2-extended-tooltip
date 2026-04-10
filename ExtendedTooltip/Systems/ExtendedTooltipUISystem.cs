@@ -1,4 +1,4 @@
-﻿using Colossal.UI.Binding;
+using Colossal.UI.Binding;
 
 using Game.UI;
 
@@ -50,13 +50,14 @@ namespace ExtendedTooltip.Systems
 
 			try
 			{
-				// Launch the URL in the default browser
-				Process.Start(url);
+				Process.Start(new ProcessStartInfo(url)
+				{
+					UseShellExecute = true
+				});
 			}
 			catch (Exception ex)
 			{
-				// Handle exceptions, if any
-				Console.WriteLine("An error occurred: " + ex.Message);
+				Mod.Log.Error($"Failed to open URL '{url}': {ex.Message}");
 			}
 		}
 

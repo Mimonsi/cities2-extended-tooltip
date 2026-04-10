@@ -1,4 +1,4 @@
-﻿using Game.Rendering;
+using Game.Rendering;
 using Game.UI.Localization;
 using Game.UI.Tooltip;
 using Game.UI.Widgets;
@@ -20,10 +20,6 @@ namespace ExtendedTooltip
 	{
 		private static bool Prefix(GuideLineTooltipSystem __instance)
 		{
-			if (Input.GetKeyDown(KeyCode.U))
-			{
-				Mod.Settings.ShowNetToolUnits = !Mod.Settings.ShowNetToolUnits;
-			}
 
 			var m_TooltipUISystem = Traverse.Create(__instance).Field("m_TooltipUISystem").GetValue<TooltipUISystem>();
 			var m_Groups = Traverse.Create(__instance).Field("m_Groups").GetValue<List<TooltipGroup>>();

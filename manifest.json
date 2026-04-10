@@ -1,10 +1,7 @@
 {
   "name": "ExtendedTooltip",
-  "version_number": "1.12.0",
-  "website_url": "https://github.com/89pleasure/cities2-extended-tooltip",
+  "version_number": "1.7.0",
+  "website_url": "https://github.com/Mimonsi/cities2-extended-tooltip",
   "description": "Adds advanced information to the game tooltips to your fingertips. Customizable to your liking.",
-  "dependencies": [
-    "BepInEx-BepInExPack-5.4.2100",
-    "Cities2Modding-Gooee-1.1.0"
-  ]
+  "dependencies": []
 }

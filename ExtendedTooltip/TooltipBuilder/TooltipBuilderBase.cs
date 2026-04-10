@@ -1,4 +1,4 @@
-﻿using ExtendedTooltip.Systems;
+using ExtendedTooltip.Systems;
 
 using Game.UI;
 
@@ -13,7 +13,7 @@ namespace ExtendedTooltip.TooltipBuilder
 			m_EntityManager = entityManager;
 			m_CustomTranslationSystem = customTranslationSystem;
 			m_ExtendedTooltipSystem = entityManager.World.GetOrCreateSystemManaged<ExtendedTooltipSystem>();
-			entityManager.World.GetOrCreateSystemManaged<NameSystem>();
+			m_NameSystem = entityManager.World.GetOrCreateSystemManaged<NameSystem>();
 		}
 
 		protected EntityManager m_EntityManager;

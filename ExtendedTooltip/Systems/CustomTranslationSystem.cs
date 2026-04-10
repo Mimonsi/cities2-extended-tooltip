@@ -1,10 +1,12 @@
-﻿using Game;
+using Game;
 using Game.SceneFlow;
+using Game.UI.Localization;
+
+using Newtonsoft.Json;
 
 using System.Collections.Generic;
 using System.IO;
-using Game.UI.Localization;
-using Newtonsoft.Json;
+using System.Reflection;
 
 namespace ExtendedTooltip.Systems
 {
@@ -14,7 +16,6 @@ namespace ExtendedTooltip.Systems
 		private string LanguageCode { get; set; }
 		public string CurrentLanguageCode => LanguageCode;
 		private Dictionary<string, string> Translations { get; set; }
-		public static string FrameworkDescription { get; }
 
 		protected override void OnCreate()
 		{
@@ -37,7 +38,47 @@ namespace ExtendedTooltip.Systems
 
 		private void LoadCustomTranslations()
 		{
+			var assembly = Assembly.GetExecutingAssembly();
+			var translations = new Dictionary<string, string>();
+			LoadResourceInto(translations, assembly, "ExtendedTooltip.Locale.json");
 
+			if (!string.IsNullOrWhiteSpace(LanguageCode))
+			{
+				var localizedResource = $"ExtendedTooltip.Locale.{LanguageCode}.json";
+				if (!LoadResourceInto(translations, assembly, localizedResource))
+				{
+					var neutralLanguage = LanguageCode.Split('-')[0];
+					if (!neutralLanguage.Equals(LanguageCode))
+					{
+						LoadResourceInto(translations, assembly, $"ExtendedTooltip.Locale.{neutralLanguage}.json");
+					}
+				}
+			}
+
+			Translations = translations;
+		}
+
+		private static bool LoadResourceInto(Dictionary<string, string> target, Assembly assembly, string resourceName)
+		{
+			using var stream = assembly.GetManifestResourceStream(resourceName);
+			if (stream == null)
+			{
+				return false;
+			}
+
+			using var reader = new StreamReader(stream);
+			var resourceTranslations = JsonConvert.DeserializeObject<Dictionary<string, string>>(reader.ReadToEnd());
+			if (resourceTranslations == null)
+			{
+				return false;
+			}
+
+			foreach (var pair in resourceTranslations)
+			{
+				target[pair.Key] = pair.Value;
+			}
+
+			return true;
 		}
 
 		public string GetTranslation(string key, string fallback = "Translation missing.", params string[] vars)

@@ -1,4 +1,4 @@
-﻿<Publish>
+<Publish>
 	<ModId Value="78188" />
 	<DisplayName Value="Extended Tooltip" />
 	<ShortDescription Value="Add new information to the mouse hover tooltip of several entities to the game." />
@@ -39,8 +39,8 @@ Thanks to TDW for their efforts to migrate this mod and apply various improvemen
 	<Screenshot Value="Properties/Screenshot_08.png" />
 	<Tag Value="Code Mod" />
 	<ForumLink Value="https://forum.paradoxplaza.com/forum/threads/extendedtooltip.1657861/" />
-	<ModVersion Value="1.6.7" />
-	<GameVersion Value="1.3.6*" />
+	<ModVersion Value="1.7.0" />
+	<GameVersion Value="1.5.6*" />
 	<ChangeLog>
 - ShowActualSpeed is now disabled by default to be more intuitive for users. Can be activated in advanced settings
 	</ChangeLog>

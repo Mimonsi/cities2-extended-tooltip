@@ -240,11 +240,13 @@ namespace ExtendedTooltip.TooltipBuilder
 					string rentValue;
 
 					// Only show range if there are more than 1 household and the min and max rents differ
-					if (householdCount > 1 && householdRents.Min() != householdRents.Max())
+					var min = householdRents.Min();
+					var max = householdRents.Max();
+					if (householdCount > 1 && min != max)
 					{
-						var minRent = householdRents.Min();
+						var minRent = min;
 						var minRentValue = minRent < 0 ? Math.Abs(minRent) : minRent;
-						var maxRent = householdRents.Max();
+						var maxRent = max;
 						var maxRentValue = maxRent < 0 ? Math.Abs(maxRent) : maxRent;
 						rentValue = m_CustomTranslationSystem.GetTranslation("common.range_value_money", "", "SIGN0", minRent < 0 ? "-" : "", "VALUE0", minRentValue.ToString("N0"), "SIGN1", maxRent < 0 ? "-" : "", "VALUE1", maxRentValue.ToString("N0"));
 					}

@@ -67,11 +67,6 @@ namespace ExtendedTooltip.TooltipBuilder
 			// Only if activated
 			if (model.ShowParkingCapacity && parkingCapacity > 0)
 			{
-				if (parkingCapacity < 0)
-				{
-					parkingCapacity = 0;
-				}
-
 				var parkingOccupationPercentage = parkedCars == 0 ? 0 : Convert.ToInt16(math.round(parkedCars * 100 / parkingCapacity));
 				StringTooltip parkingOccupationTooltip = new()
 				{

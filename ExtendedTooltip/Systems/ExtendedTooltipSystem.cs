@@ -417,7 +417,7 @@ namespace ExtendedTooltip.Systems
 				return false;
 			}
 
-			return m_ToolSystem.activeInfoview.name.Equals("Electricity".Trim()) || m_ToolSystem.activeInfoview.name.Equals("WaterPipes".Trim());
+			return m_ToolSystem.activeInfoview.name.Equals("Electricity") || m_ToolSystem.activeInfoview.name.Equals("WaterPipes");
 		}
 
 		private void UpdateSecondaryTooltipGroup()

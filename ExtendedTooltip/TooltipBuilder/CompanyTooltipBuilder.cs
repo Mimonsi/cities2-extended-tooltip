@@ -84,18 +84,10 @@ namespace ExtendedTooltip.TooltipBuilder
 						(model.UseExtendedLayout && !IsMixed ? secondaryTooltipGroup : tooltipGroup).children.Add(CreateResourceTooltip(companyEntity, companyEntityPrefab, resources, output, true));
 				}
 
-				// Company money balance
-				if (model.ShowCompanyBalance && !IsBulldozing)
+				// Company money balance (matches the Bank Balance shown in the in-game side panel)
+				if (model.ShowCompanyBalance && !IsBulldozing && m_EntityManager.TryGetComponent(companyEntity, out CompanyStatisticData companyStatistics))
 				{
-					var companyBalance = 0;
-					for (var i = 0; i < resources.Length; i++)
-					{
-						if (resources[i].m_Resource is Resource.Money)
-						{
-							companyBalance = resources[i].m_Amount;
-							break;
-						}
-					}
+					var companyBalance = companyStatistics.m_Worth;
 					var companyBalanceLabel = m_CustomTranslationSystem.GetTranslation("balance", "Balance");
 					var companyBalanceValueString = "\u00a2" + companyBalance.ToString("N0");
 					var finalCompanyBalanceString = $"{companyBalanceLabel}: {companyBalanceValueString}";

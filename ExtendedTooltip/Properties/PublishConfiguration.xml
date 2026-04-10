@@ -42,7 +42,11 @@ Thanks to TDW for their efforts to migrate this mod and apply various improvemen
 	<ModVersion Value="1.7.0" />
 	<GameVersion Value="1.5.6*" />
 	<ChangeLog>
-- ShowActualSpeed is now disabled by default to be more intuitive for users. Can be activated in advanced settings
+- Added Vehicle Properties Tooltip (disabled by default, advanced settings)
+- Updated all localizations and remove unneeded localization (using LLM, feel free to provide updated localizations to the GitHub)
+- Fixed a bug where the Net Tool Unit setting would not be remembered
+- Fixed a bug where the company balance tooltip showed the wrong value
+- Fixed bug where public transport stops with parking didn't show bus stop info, just parking info
 	</ChangeLog>
 	<ExternalLink Type="discord" Url="https://discord.com/invite/HTav7ARPs2" />
 	<ExternalLink Type="github" Url="https://github.com/Mimonsi/cities2-extended-tooltip" />

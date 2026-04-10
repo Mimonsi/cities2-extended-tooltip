@@ -47,6 +47,9 @@ Thanks to TDW for their efforts to migrate this mod and apply various improvemen
 - Fixed a bug where the Net Tool Unit setting would not be remembered
 - Fixed a bug where the company balance tooltip showed the wrong value
 - Fixed bug where public transport stops with parking didn't show bus stop info, just parking info
+- Fixed several issues where tooltips would not show all values
+- Added Layout Balancing for Extended Layout, so that both sides display a similar number of tooltips
+- TODO: Add Tooltip for healthcare usage (50%, 100/200 patients), cemetary and garbage
 	</ChangeLog>
 	<ExternalLink Type="discord" Url="https://discord.com/invite/HTav7ARPs2" />
 	<ExternalLink Type="github" Url="https://github.com/Mimonsi/cities2-extended-tooltip" />

@@ -69,13 +69,13 @@ namespace Game.UI.Tooltip
 					if (Mod.Settings.ShowGrowables && HasSpawnableBuildingData(selectedEntity, prefab, out var buildingLevel, out var currentCondition, out var levelingCost, out var spawnableData))
 					{
 						var citizenHappinessParameters = m_CitizenHappinessParameterDataQuery.GetSingleton<CitizenHappinessParameterData>();
-						m_SpawnablesTooltipBuilder.Build(m_BulldozeTool, false, selectedEntity, prefab, buildingLevel, currentCondition, levelingCost, spawnableData, citizenHappinessParameters, m_TooltipGroup, m_TooltipGroup);
+						m_SpawnablesTooltipBuilder.Build(m_BulldozeTool, selectedEntity, prefab, buildingLevel, currentCondition, levelingCost, spawnableData, citizenHappinessParameters, m_TooltipGroup);
 					}
 
 					// COMPANY (Office, Industrial, Commercial) TOOLTIP
 					if (CompanyUIUtils.HasCompany(EntityManager, selectedEntity, prefab, out var company))
 					{
-						m_CompanyTooltipBuilder.Build(company, m_TooltipGroup, m_TooltipGroup, false, true);
+						m_CompanyTooltipBuilder.Build(company, m_TooltipGroup, true);
 					}
 				}
 

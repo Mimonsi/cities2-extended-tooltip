@@ -26,7 +26,7 @@ namespace ExtendedTooltip.TooltipBuilder
 			Mod.Log.Info($"Created CompanyTooltipBuilder.");
 		}
 
-		public void Build(Entity companyEntity, TooltipGroup tooltipGroup, TooltipGroup secondaryTooltipGroup, bool IsMixed = false, bool IsBulldozing = false)
+		public void Build(Entity companyEntity, TooltipGroup tooltipGroup, bool IsBulldozing = false)
 		{
 			var model = Mod.Settings;
 
@@ -58,7 +58,7 @@ namespace ExtendedTooltip.TooltipBuilder
 					var percentage = ((double)companyProfitability.m_Profitability / 255.0) * 100;
 					profitabilityTooltip.value = $"{profitabilityLabel}: {profitabilityValue} ({(int)percentage}%)";
 				}
-				(model.UseExtendedLayout && !IsMixed ? secondaryTooltipGroup : tooltipGroup).children.Add(profitabilityTooltip);
+				tooltipGroup.children.Add(profitabilityTooltip);
 			}
 
 			// Company resource section
@@ -73,15 +73,15 @@ namespace ExtendedTooltip.TooltipBuilder
 
 					if (input1 > 0 && input1 != Resource.NoResource && input1 != output)
 					{
-						(model.UseExtendedLayout && !IsMixed ? secondaryTooltipGroup : tooltipGroup).children.Add(CreateResourceTooltip(companyEntity, companyEntityPrefab, resources, input1));
+						tooltipGroup.children.Add(CreateResourceTooltip(companyEntity, companyEntityPrefab, resources, input1));
 					}
 
 					if (input2 > 0 && input2 != Resource.NoResource && input2 != output)
 					{
-						(model.UseExtendedLayout && !IsMixed ? secondaryTooltipGroup : tooltipGroup).children.Add(CreateResourceTooltip(companyEntity, companyEntityPrefab, resources, input2));
+						tooltipGroup.children.Add(CreateResourceTooltip(companyEntity, companyEntityPrefab, resources, input2));
 					}
 
-						(model.UseExtendedLayout && !IsMixed ? secondaryTooltipGroup : tooltipGroup).children.Add(CreateResourceTooltip(companyEntity, companyEntityPrefab, resources, output, true));
+						tooltipGroup.children.Add(CreateResourceTooltip(companyEntity, companyEntityPrefab, resources, output, true));
 				}
 
 				// Company money balance (matches the Bank Balance shown in the in-game side panel)
@@ -98,7 +98,7 @@ namespace ExtendedTooltip.TooltipBuilder
 						icon = "Media/Game/Icons/Money.svg",
 						color = companyBalance < 0 ? TooltipColor.Error : TooltipColor.Info,
 					};
-					(model.UseExtendedLayout && !IsMixed ? secondaryTooltipGroup : tooltipGroup).children.Add(companyBalanceTooltip);
+					tooltipGroup.children.Add(companyBalanceTooltip);
 				}
 			}
 
@@ -121,7 +121,7 @@ namespace ExtendedTooltip.TooltipBuilder
 					value = $"{rentLabel}: {rentValue}",
 					color = TooltipColor.Info,
 				};
-				(model.UseExtendedLayout && !IsMixed ? secondaryTooltipGroup : tooltipGroup).children.Add(rentTooltip);
+				tooltipGroup.children.Add(rentTooltip);
 			}
 		}
 

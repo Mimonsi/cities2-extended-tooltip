@@ -40,7 +40,7 @@ namespace ExtendedTooltip.TooltipBuilder
 			Mod.Log.Info($"Created SpawnablesTooltipBuilder.");
 		}
 
-		public void Build(ToolBaseSystem activeTool, bool isMixed, Entity entity, Entity prefab, int buildingLevel, int currentCondition, int levelingCost, SpawnableBuildingData spawnableBuildingData, CitizenHappinessParameterData citizenHappinessParameters, TooltipGroup tooltipGroup, TooltipGroup secondaryTooltipGroup)
+		public void Build(ToolBaseSystem activeTool, Entity entity, Entity prefab, int buildingLevel, int currentCondition, int levelingCost, SpawnableBuildingData spawnableBuildingData, CitizenHappinessParameterData citizenHappinessParameters, TooltipGroup tooltipGroup)
 		{
 			var model = Mod.Settings;
 
@@ -95,7 +95,7 @@ namespace ExtendedTooltip.TooltipBuilder
 					icon = "Media/Game/Icons/Zones.svg",
 					value = finalZoneName,
 				};
-				(model.UseExtendedLayout ? secondaryTooltipGroup : tooltipGroup).children.Add(zoneTooltip);
+				tooltipGroup.children.Add(zoneTooltip);
 			}
 
 			if (model.ShowGrowablesLevel)
@@ -126,7 +126,7 @@ namespace ExtendedTooltip.TooltipBuilder
 					value = $"{buildingLevelLabel}: {buildingLevelValue}",
 					color = buildingLevelColor
 				};
-				(model.UseExtendedLayout && isMixed ? secondaryTooltipGroup : tooltipGroup).children.Add(levelTooltip);
+				tooltipGroup.children.Add(levelTooltip);
 			}
 
 			// LAND VALUE TOOLTIP
@@ -148,7 +148,7 @@ namespace ExtendedTooltip.TooltipBuilder
 						icon = "Media/Game/Icons/LandValue.svg",
 						color = landValueTooltipColor
 					};
-					(model.UseExtendedLayout && isMixed ? secondaryTooltipGroup : tooltipGroup).children.Add(landValueTooltip);
+					tooltipGroup.children.Add(landValueTooltip);
 				}
 			}
 
@@ -173,7 +173,7 @@ namespace ExtendedTooltip.TooltipBuilder
 						value = finalInfoString,
 						color = householdTooltipColor
 					};
-					(model.UseExtendedLayout && isMixed ? secondaryTooltipGroup : tooltipGroup).children.Add(householdTooltip);
+					tooltipGroup.children.Add(householdTooltip);
 				}
 
 				if (model.ShowGrowablesHouseholdWealth && activeTool is DefaultToolSystem && householdsResult.Length > 0)
@@ -198,7 +198,7 @@ namespace ExtendedTooltip.TooltipBuilder
 						value = $"{wealthLabel}: {wealthValue}",
 						color = tooltipColor,
 					};
-					(model.UseExtendedLayout ? secondaryTooltipGroup : tooltipGroup).children.Add(wealthTooltip);
+					tooltipGroup.children.Add(wealthTooltip);
 				}
 
 				if (model.ShowGrowablesBalance && !isBulldozing && householdBalances.Count > 0)
@@ -231,7 +231,7 @@ namespace ExtendedTooltip.TooltipBuilder
 						color = (householdCount > 1 && minBalance < 0 && maxBalance < 0) || (householdCount == 1 && finalBalance < 0) ? TooltipColor.Error : TooltipColor.Info,
 					};
 
-					(model.UseExtendedLayout ? secondaryTooltipGroup : tooltipGroup).children.Add(balanceTooltip);
+					tooltipGroup.children.Add(balanceTooltip);
 				}
 
 				if (model.ShowGrowablesRent == true && !isBulldozing && householdRents.Count > 0)
@@ -264,7 +264,7 @@ namespace ExtendedTooltip.TooltipBuilder
 						color = TooltipColor.Info,
 					};
 
-					(model.UseExtendedLayout ? secondaryTooltipGroup : tooltipGroup).children.Add(rentTooltip);
+					tooltipGroup.children.Add(rentTooltip);
 				}
 			}
 		}

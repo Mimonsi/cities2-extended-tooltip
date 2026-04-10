@@ -21,7 +21,7 @@ namespace ExtendedTooltip.TooltipBuilder
 			Mod.Log.Info($"Created CitizenTooltipBuilder.");
 		}
 
-		public void Build(Entity entity, Citizen citizen, CitizenHappinessParameterData citizenHappinessParameters, TooltipGroup tooltipGroup, TooltipGroup secondaryTooltipGroup)
+		public void Build(Entity entity, Citizen citizen, CitizenHappinessParameterData citizenHappinessParameters, TooltipGroup tooltipGroup)
 		{
 			var model = Mod.Settings;
 
@@ -62,7 +62,7 @@ namespace ExtendedTooltip.TooltipBuilder
 						value = $"{citizenTypeValue}",
 						color = TooltipColor.Info,
 					};
-					(model.UseExtendedLayout ? secondaryTooltipGroup : tooltipGroup).children.Add(citizenTypeTooltip);
+					tooltipGroup.children.Add(citizenTypeTooltip);
 				}
 
 				if (model.ShowCitizenWealth)
@@ -83,7 +83,7 @@ namespace ExtendedTooltip.TooltipBuilder
 						value = $"{wealthLabel}: {wealthValue}",
 						color = tooltipColor,
 					};
-					(model.UseExtendedLayout ? secondaryTooltipGroup : tooltipGroup).children.Add(wealthTooltip);
+					tooltipGroup.children.Add(wealthTooltip);
 				}
 			}
 
@@ -142,7 +142,7 @@ namespace ExtendedTooltip.TooltipBuilder
 						value = $"{m_CustomTranslationSystem.GetLocalGameTranslation($"SelectedInfoPanel.CITIZEN_SHIFT", "Shift")}: {shiftLocalization}",
 						color = TooltipColor.Info,
 					};
-					(model.UseExtendedLayout ? secondaryTooltipGroup : tooltipGroup).children.Add(shiftTooltip);
+					tooltipGroup.children.Add(shiftTooltip);
 				}
 			}
 		}

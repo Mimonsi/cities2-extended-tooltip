@@ -148,6 +148,7 @@ namespace ExtendedTooltip.Systems
 						if (ShouldDisplayExtendedTooltip(entity))
 						{
 							CreateExtendedTooltips(entity, prefab);
+							SplitTooltipsForExtendedLayout();
 							var i = 1;
 							foreach (var tooltip in m_PrimaryETGroup.children)
 							{
@@ -240,7 +241,7 @@ namespace ExtendedTooltip.Systems
 			if (Mod.Settings.ShowCitizen && EntityManager.TryGetComponent<Citizen>(selectedEntity, out var citizen))
 			{
 				var citizenHappinessParameters = m_CitizenHappinessParameterDataQuery.GetSingleton<CitizenHappinessParameterData>();
-				m_CitizenTooltipBuilder.Build(selectedEntity, citizen, citizenHappinessParameters, m_PrimaryETGroup, m_SecondaryETGroup);
+				m_CitizenTooltipBuilder.Build(selectedEntity, citizen, citizenHappinessParameters, m_PrimaryETGroup);
 
 				return; // don't have any other info. No need to check for other components
 			}
@@ -260,11 +261,10 @@ namespace ExtendedTooltip.Systems
 			}
 
 			// SPAWNABLES TOOLTIP
-			var IsMixed = IsMixedBuilding(prefab);
 			if (Mod.Settings.ShowGrowables && HasSpawnableBuildingData(selectedEntity, prefab, out var buildingLevel, out var currentCondition, out var levelingCost, out var spawnableData))
 			{
 				var citizenHappinessParameters = m_CitizenHappinessParameterDataQuery.GetSingleton<CitizenHappinessParameterData>();
-				m_SpawnablesTooltipBuilder.Build(m_DefaultTool, IsMixed, selectedEntity, prefab, buildingLevel, currentCondition, levelingCost, spawnableData, citizenHappinessParameters, m_PrimaryETGroup, m_SecondaryETGroup);
+				m_SpawnablesTooltipBuilder.Build(m_DefaultTool, selectedEntity, prefab, buildingLevel, currentCondition, levelingCost, spawnableData, citizenHappinessParameters, m_PrimaryETGroup);
 			}
 
 			// EFFICIENCY TOOLTIP
@@ -277,7 +277,7 @@ namespace ExtendedTooltip.Systems
 			if (Mod.Settings.ShowPark && EntityManager.HasComponent<Game.Buildings.Park>(selectedEntity))
 			{
 				m_ParkTooltipBuilder.Build(selectedEntity, prefab, m_PrimaryETGroup);
-				return; // don't have any other info. No need to check for other components
+				//return; // don't have any other info. No need to check for other components
 			}
 
 			// PARKING FACILITY TOOLTIP
@@ -298,7 +298,7 @@ namespace ExtendedTooltip.Systems
 			if (Mod.Settings.ShowPublicTransport && (EntityManager.HasComponent<WaitingPassengers>(selectedEntity) || EntityManager.HasBuffer<ConnectedRoute>(selectedEntity) || EntityManager.HasComponent<Game.Buildings.PublicTransportStation>(selectedEntity)))
 			{
 				m_PublicTransportationTooltipBuilder.Build(selectedEntity, m_PrimaryETGroup);
-				return; // don't have any other info. No need to check for other components
+				//return; // don't have any other info. No need to check for other components
 			}
 
 			// EMPLOYEES TOOLTIP
@@ -316,7 +316,7 @@ namespace ExtendedTooltip.Systems
 			// COMPANY (Office, Industrial, Commercial) TOOLTIP
 			if (CompanyUIUtils.HasCompany(EntityManager, selectedEntity, prefab, out var company))
 			{
-				m_CompanyTooltipBuilder.Build(company, m_PrimaryETGroup, m_SecondaryETGroup, IsMixed);
+				m_CompanyTooltipBuilder.Build(company, m_PrimaryETGroup);
 			}
 		}
 
@@ -326,12 +326,6 @@ namespace ExtendedTooltip.Systems
 				!EntityManager.HasComponent<Abandoned>(selectedEntity) &&
 				!EntityManager.HasComponent<Destroyed>(selectedEntity) &&
 				(!CompanyUIUtils.HasCompany(EntityManager, selectedEntity, selectedPrefab, out var entity) || entity != Entity.Null);
-		}
-
-		private bool IsMixedBuilding(Entity prefab)
-		{
-			var buildingPropertyData = EntityManager.GetComponentData<BuildingPropertyData>(prefab);
-			return buildingPropertyData.CountProperties(AreaType.Residential) > 0 && buildingPropertyData.CountProperties(AreaType.Commercial) > 0;
 		}
 
 		private bool HasEmployees(Entity entity, Entity prefab)
@@ -418,6 +412,36 @@ namespace ExtendedTooltip.Systems
 			}
 
 			return m_ToolSystem.activeInfoview.name.Equals("Electricity") || m_ToolSystem.activeInfoview.name.Equals("WaterPipes");
+		}
+
+		private void SplitTooltipsForExtendedLayout()
+		{
+			if (!Mod.Settings.UseExtendedLayout)
+			{
+				return;
+			}
+
+			var total = m_PrimaryETGroup.children.Count;
+			if (total < 2)
+			{
+				return;
+			}
+
+			// First half (rounded up) stays in primary, the rest moves to secondary.
+			var offset = -1; // Vanilla tooltips are 1-4, so offset of -1 should balance it
+			//Mod.Log.Debug($"Calculated Total: {m_TooltipUISystem.mouseGroup.children}");
+			var splitIndex = (total + 1 + offset) / 2 + offset;
+			//Mod.Log.Debug($"Splitting {total} tooltips at index {splitIndex}.");
+			for (var idx = splitIndex; idx < total; idx++)
+			{
+				m_SecondaryETGroup.children.Add(m_PrimaryETGroup.children[idx]);
+			}
+			while (m_PrimaryETGroup.children.Count > splitIndex)
+			{
+				m_PrimaryETGroup.children.RemoveAt(m_PrimaryETGroup.children.Count - 1);
+			}
+
+			//Mod.Log.Debug($"First Group: {m_PrimaryETGroup.children.Count}, Second Group: {m_SecondaryETGroup.children.Count}");
 		}
 
 		private void UpdateSecondaryTooltipGroup()
